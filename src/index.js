@@ -5,8 +5,15 @@ require("dotenv").config();
 const db = require("./db");
 const models = require("./models");
 const resolvers = require("./resolvers");
+const helmet = require("helmet");
 const app = express();
 
+app.use(
+  helmet({
+    contentSecurityPolicy:
+      process.env.NODE_ENV === "production" ? undefined : false,
+  })
+);
 // get the user info from a JWT
 const getUser = (token) => {
   if (token) {

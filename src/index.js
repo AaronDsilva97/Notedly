@@ -12,10 +12,16 @@ const resolvers = require("./resolvers");
 
 const app = express();
 
-app.use(helmet());
-
 app.use(cors());
 
+const app = express();
+
+app.use(
+  helmet({
+    contentSecurityPolicy:
+      process.env.NODE_ENV === "production" ? undefined : false,
+  })
+);
 // get the user info from a JWT
 const getUser = (token) => {
   if (token) {

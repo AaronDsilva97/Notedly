@@ -14,8 +14,6 @@ const app = express();
 
 app.use(cors());
 
-const app = express();
-
 app.use(
   helmet({
     contentSecurityPolicy:
@@ -39,7 +37,7 @@ const getUser = (token) => {
 const typeDefs = require("./schema");
 
 //dynamic port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 const DB_HOST = process.env.DB_HOST;
 
